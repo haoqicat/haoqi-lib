@@ -1,0 +1,10 @@
+[
+  {
+    "bookId": "git-beijing",
+    "title": "Git 北京"
+  },
+  {
+    "bookId": "react-tips",
+    "title": "React 技巧"
+  }
+]
