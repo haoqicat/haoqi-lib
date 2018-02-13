@@ -6,6 +6,7 @@ module.exports = {
       options: {
         path: `${__dirname}/data/`
       }
-    }
+    },
+    'gatsby-transformer-remark'
   ]
 }
