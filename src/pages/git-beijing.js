@@ -18,7 +18,7 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
   query TocQuery {
-    allTocJson {
+    allTocJson(filter: { fields: { bookId: { eq: "git-beijing" } } }) {
       edges {
         node {
           id
