@@ -1,14 +1,26 @@
 const path = require(`path`)
 
-module.exports = ({ boundActionCreators }) => {
+module.exports = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
-  const episodes = ['001-setup', '002-clone']
-  episodes.forEach(episode => {
+  const allMarkdown = await graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              episode
+            }
+          }
+        }
+      }
+    }
+  `)
+  allMarkdown.data.allMarkdownRemark.edges.map(({ node }) => {
     createPage({
-      path: episode,
+      path: node.fields.episode,
       component: path.resolve(`./src/templates/episode.js`),
       context: {
-        episode
+        episode: node.fields.episode
       }
     })
   })
