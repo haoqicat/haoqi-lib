@@ -1,14 +1,14 @@
 [
   {
     "episodeId": "001-setup",
-    "title": "基本设置"
+    "title": "基本 react 设置"
   },
   {
     "episodeId": "002-clone",
-    "title": "克隆项目"
+    "title": "克隆 react 项目"
   },
   {
     "episodeId": "003-pull",
-    "title": "获取更新"
+    "title": "获取 react 更新"
   }
 ]
