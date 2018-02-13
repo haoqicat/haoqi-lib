@@ -2,13 +2,17 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 
-export default ({ data }) => {
+export default ({ data, pathContext }) => {
   const { edges: episodes } = data.allTocJson
+  const { bookId } = pathContext
 
   return (
     <ul>
       {episodes.map(ep => (
-        <StyledLink key={ep.node.id} to={`/git-beijing/${ep.node.id}`}>
+        <StyledLink
+          key={ep.node.episodeId}
+          to={`${bookId}/${ep.node.episodeId}`}
+        >
           {ep.node.title}
         </StyledLink>
       ))}
@@ -17,11 +21,11 @@ export default ({ data }) => {
 }
 
 export const pageQuery = graphql`
-  query TocQuery {
-    allTocJson(filter: { fields: { bookId: { eq: "git-beijing" } } }) {
+  query TocQuery($bookId: String!) {
+    allTocJson(filter: { fields: { bookId: { eq: $bookId } } }) {
       edges {
         node {
-          id
+          episodeId
           title
         }
       }
